@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM resin/rpi-raspbian:jessie
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r rabbitmq && useradd -r -d /var/lib/rabbitmq -m -g rabbitmq rabbitmq
@@ -27,13 +27,14 @@ RUN echo 'deb http://packages.erlang-solutions.com/debian jessie contrib' > /etc
 # install Erlang
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
+        erlang \ 
 		erlang-asn1 \
-		erlang-base-hipe \
+#		erlang-base-hipe \
 		erlang-crypto \
 		erlang-eldap \
 		erlang-inets \
 		erlang-mnesia \
-		erlang-nox \
+#		erlang-nox \
 		erlang-os-mon \
 		erlang-public-key \
 		erlang-ssl \
